@@ -1,1 +1,10 @@
-.container {}
+.imgContainer {
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+
+.img {
+    object-fit: cover;
+    filter: grayscale(100%);
+}
