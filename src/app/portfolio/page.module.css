@@ -1,1 +1,42 @@
-.container {}
+.mainTitle {
+    font-size: 100px;
+}
+
+.selectTitle {
+    margin: 20px;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.item {
+    position: relative;
+    border: 5px solid grey;
+    border-radius: 5px;
+    width: 200px;
+    height: 300px;
+    background-size: cover !important;
+}
+
+.title {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.item:nth-child(1) {
+    background: url(../../../public/illustration.png);
+}
+
+.item:nth-child(2) {
+    background: url(../../../public/websites.jpg);
+}
+
+.item:nth-child(3) {
+    background: url(../../../public/apps.jpg);
+}

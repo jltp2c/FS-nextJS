@@ -38,7 +38,7 @@ function About() {
             officiis voluptatum quo ea eveniet?
           </p>
         </div>
-    <div className={styles.item}>
+        <div className={styles.item}>
           <h1 className={styles.title}>What We Do?</h1>
           <p className={styles.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
