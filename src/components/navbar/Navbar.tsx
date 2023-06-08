@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
+import DarkTheme from '../darkTheme/Darktheme'
 
 
 function Navbar() {
@@ -52,7 +53,9 @@ const links:linkType = [
     <div className={styles.container}>
        
       <Link href="/" className={styles.logo}>TrendyZone</Link>
+      
       <div className={styles.links}>
+        <DarkTheme/>
         {links?.map(link =>{
           return(
             <Link href={link.url} key={link.id} className={styles.link}>{link.title}</Link>
