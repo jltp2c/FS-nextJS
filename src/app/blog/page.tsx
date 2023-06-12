@@ -1,8 +1,5 @@
 import React from 'react'
 import styles from './page.module.css'
-import Image from 'next/image'
-import Link from 'next/link'
-
 
 
 async function getData() {
@@ -22,20 +19,26 @@ type dataType = {
 }
 
 const Blog = async () => {
-  const data  = await getData()
+  const dataInfo  = await getData()
   return (
     <div className={styles.container} >
-        {data.map((item:dataType) => {
-          <Link href={`/blog/${item.id}`} className={styles.mainContainer} key={item.id}> 
+        {
+         dataInfo.map((it :dataType) => {
             <div className={styles.content}>
-              <h1 className={styles.title}>{item.title}</h1>
-              <p className={styles.desc}>{item.body}</p>
+              <h1 className={styles.title}>{it.title}</h1>
+              <p className={styles.desc}>{it.body}</p>
             </div>
-            <div className={styles.imgContainer}>
-              <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true}  alt="image"/>
-            </div>
-          </Link>
-       })}
+         })
+          // <Link href={`/blog/${item.id}`} className={styles.mainContainer} key={item.id}> 
+          //   <div className={styles.content}>
+          //     <h1 className={styles.title}>{item.title}</h1>
+          //     <p className={styles.desc}>{item.body}</p>
+          //   </div>
+          //   <div className={styles.imgContainer}>
+          //     <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true}  alt="image"/>
+          //   </div>
+          // </Link>
+       }
     </div>
   )
 }
