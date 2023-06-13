@@ -1,10 +1,11 @@
-import React from 'react'
-import styles from './page.module.css'
+import React from 'react';
+import styles from './page.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
 
 
 async function getData() {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts', { cache: 'no-store'  });
-  
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -23,22 +24,21 @@ const Blog = async () => {
   return (
     <div className={styles.container} >
         {
-         dataInfo.map((it :dataType) => {
+         dataInfo.map((item : dataType) => {
+           return(
+             <Link href={`/blog/${item.id}`} className={styles.mainContainer} key={item.id}> 
             <div className={styles.content}>
-              <h1 className={styles.title}>{it.title}</h1>
-              <p className={styles.desc}>{it.body}</p>
+              <h1 className={styles.title}>{item.title}</h1>
+              <p className={styles.desc}>{item.body}</p>
             </div>
+            <div className={styles.imgContainer}>
+              <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true}  alt="image"/>
+            </div>
+          </Link>
+           )
          })
-          // <Link href={`/blog/${item.id}`} className={styles.mainContainer} key={item.id}> 
-          //   <div className={styles.content}>
-          //     <h1 className={styles.title}>{item.title}</h1>
-          //     <p className={styles.desc}>{item.body}</p>
-          //   </div>
-          //   <div className={styles.imgContainer}>
-          //     <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true}  alt="image"/>
-          //   </div>
-          // </Link>
-       }
+          
+        }
     </div>
   )
 }
