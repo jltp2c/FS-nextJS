@@ -28,6 +28,7 @@ async function BlogPost({params }: any) {
               src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"}
               alt="img"
               width={40}
+              priority
               height={40}
               className={styles.avatar}
             />
@@ -37,9 +38,10 @@ async function BlogPost({params }: any) {
         <div className={styles.imageContainer}>
           <Image
             src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"}
-            alt=""
+            alt="img"
             fill={true}
             className={styles.image}
+            priority
           />
         </div>
       </div>

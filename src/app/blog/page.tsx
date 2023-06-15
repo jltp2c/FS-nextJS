@@ -32,7 +32,7 @@ const Blog = async () => {
               <p className={styles.desc}>{item.body}</p>
             </div>
             <div className={styles.imgContainer}>
-              <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true}  alt="image"/>
+              <Image src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"} className={styles.img} fill={true} priority alt="image"/>
             </div>
           </Link>
            )
