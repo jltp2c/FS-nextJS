@@ -28,5 +28,4 @@ const postSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model["Post"] | mongoose.model("Post", postSchema);
-//message eerreur
+export default mongoose.model("Post", postSchema);
