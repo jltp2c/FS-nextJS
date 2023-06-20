@@ -13,11 +13,12 @@ async function getData() {
 }
 
 type dataType = {
-  userId : number,
-  id : number,
+  _id : string,
   title : string,
-  image : string
   desc : string,
+  image : string,
+  content : string,
+  username : string,
 }
 
 const Blog = async () => {
@@ -27,13 +28,13 @@ const Blog = async () => {
         {
          dataInfo.map((item : dataType) => {
            return(
-             <Link href={`/blog/${item.id}`} className={styles.mainContainer} key={item.id}> 
+             <Link href={`/blog/${item._id}`} className={styles.mainContainer} key={item._id}> 
             <div className={styles.content}>
               <h1 className={styles.title}>{item.title}</h1>
               <p className={styles.desc}>{item.desc}</p>
             </div>
             <div className={styles.imgContainer}>
-              <Image src={item.image} className={styles.img} fill={true} priority alt="image"/>
+              <Image src={item.image} className={styles.img} fill={true} priority alt={item.title}/>
             </div>
           </Link>
            )
