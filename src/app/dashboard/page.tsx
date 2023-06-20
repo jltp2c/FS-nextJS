@@ -5,6 +5,8 @@ import styles from "./page.module.css";
 import useSWR from 'swr';
 
 
+
+
 function Dashboard() {
   //SWR method 
  const fetcher  = (...args: Parameters<typeof fetch>) => fetch(...args).then(res => res.json()) 

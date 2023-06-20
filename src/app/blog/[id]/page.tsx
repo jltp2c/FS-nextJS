@@ -4,14 +4,22 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation';
 
 
+
 async function getData(id : number) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { cache: 'no-store'  });
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, { cache: 'no-store'  });
   if (!res.ok) {
     return notFound()
   }
   return res.json();
 }
 
+export async function generateMetadata({ params}:any) {
+const post = await getData(params.id)
+  return {
+    title: post.title,
+    description : post.desc
+  }
+}
 
 async function BlogPost({params }: any) {
   const data = await getData(params.id)
@@ -21,11 +29,11 @@ async function BlogPost({params }: any) {
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
           <p className={styles.desc}>
-           {data.body}
+           {data.desc}
           </p>
           <div className={styles.author}>
             <Image
-              src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"}
+              src={data.image}
               alt="img"
               width={40}
               priority
@@ -37,7 +45,7 @@ async function BlogPost({params }: any) {
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src={"https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"}
+            src={data.image}
             alt="img"
             fill={true}
             className={styles.image}
@@ -47,7 +55,7 @@ async function BlogPost({params }: any) {
       </div>
       <div className={styles.content}>
         <p className={styles.text}>
-         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam numquam mollitia impedit labore repellat quam doloremque laborum. Vitae a possimus dolores vero at iure explicabo repellat cumque voluptatibus. Voluptates, aliquam!
+         {data.content}
         </p>
       </div>
     </div>
