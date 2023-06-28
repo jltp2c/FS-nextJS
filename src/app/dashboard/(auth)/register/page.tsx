@@ -1,8 +1,13 @@
-import React from 'react'
+"use client"
+
+import React from 'react';
+import styles from './module.page.css'
 
 function Register() {
   return (
-    <div>Register</div>
+    <div className={styles.container}>
+      <form action=""></form>
+    </div>
   )
 }
 
