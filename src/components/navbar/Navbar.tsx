@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import DarkTheme from '../darkTheme/Darktheme'
+import { signOut } from 'next-auth/react'
 
 
 function Navbar() {
@@ -61,7 +62,9 @@ const links:linkType = [
             <Link href={link.url} key={link.id} className={styles.link}>{link.title}</Link>
             ) 
         })}
-        <button onClick={()=>{console.log("logged out!")}} className={styles.logout}>Logout</button>
+        <button  
+        className={styles.logout}
+        onClick={signOut}>Logout</button>
       </div>
 
       

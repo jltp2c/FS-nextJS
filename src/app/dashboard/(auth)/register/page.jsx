@@ -25,7 +25,7 @@ try {
     body : JSON.stringify({
       name,
       email,
-      password
+      password,
     })
   })
   res.status === 201 && router.push("/dashboard/login?success =Your account has been created")

@@ -5,14 +5,16 @@ import styles from "./page.module.css"
 
 function Login() {
 
- 
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
   e.preventDefault()
-  
     const email = e.target[0].value
-    const password = e.target[1].value
+    const password = e.target[1].value;
 
-    signIn('credentials', {email , password})
+    signIn('credentials', 
+    {
+      email , 
+      password
+    })
   };
 
   return (

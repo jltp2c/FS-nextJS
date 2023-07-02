@@ -1,39 +1,44 @@
-import { connect } from "http2";
+import connect from "@/utils/db.js";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@/models/User.js";
+import bcrypt from "bcryptjs";
 
 const handler = NextAuth({
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
     CredentialsProvider({
       id: "credentials",
       name: "Credentials",
       async authorize(credentials) {
         await connect();
         try {
-          const user = await User.findOne({ email: credentials.email });
+          const user = await User.findOne({
+            email: credentials.email,
+          });
+
           if (user) {
-            const passwordCorrect = await bcrypt.compare(
+            const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
               user.password
             );
-            if (passwordCorrect) {
+
+            if (isPasswordCorrect) {
               return user;
             } else {
-              throw new Error("your credential is not found");
+              throw new Error("Wrong Credentials!");
             }
           } else {
-            throw new Error("User not found ");
+            throw new Error("User not found!");
           }
-        } catch (error) {
-          throw new Error(error);
+        } catch (err) {
+          throw new Error(err);
         }
       },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   pages: {
