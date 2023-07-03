@@ -3,11 +3,12 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './page.module.css'
 import DarkTheme from '../darkTheme/Darktheme'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react';
 
 
 function Navbar() {
  
+  const session = useSession()
 
   type linkType = {
     id: number
@@ -62,9 +63,11 @@ const links:linkType = [
             <Link href={link.url} key={link.id} className={styles.link}>{link.title}</Link>
             ) 
         })}
-        <button  
-        className={styles.logout}
-        onClick={signOut}>Logout</button>
+        {session.status === "authenticated" && (
+          <button  
+          className={styles.logout}
+          onClick={signOut}>Logout</button>
+        )}
       </div>
 
       
